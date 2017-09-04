@@ -81,7 +81,5 @@ class Timer
         {
             return funct;
         }
-
-
 };
 #endif // TIMER_H

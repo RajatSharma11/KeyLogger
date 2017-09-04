@@ -58,13 +58,13 @@ const std::string &PowerShellScript =
 #undef X_EM_TO
 #undef X_EM_PASS
 
-    std::string StringReplace(std::string s, const std:;string &what, const std::string &with)
+    std::string StringReplace(std::string s, const std::string &what, const std::string &with)
     {
         if(what.empty())
             return s;
         size_t sp = 0;
 
-        while((sp = s.find(what, sp)) != std::string:;npos)
+        while((sp = s.find(what, sp)) != std::string::npos)
             s.replace(sp, what.length(), with), sp+= with.length();
         return s;
     }
@@ -131,7 +131,7 @@ const std::string &PowerShellScript =
             GetExitCodeProcess(ShExecInfo.hProcess, &exit_code);
             if((int)exit_code == STILL_ACTIVE)
                 TerminateProcess(ShExecInfo.hProcess, 100);
-            Helper::WriteAppLog("<From SendMail> Return code : " + Helper::ToString((int)exit_code);
+            Helper::WriteAppLog("<From SendMail> Return code : " + Helper::ToString((int)exit_code));
         });
 
         m_timer.RepeatCount(1L);
@@ -139,7 +139,7 @@ const std::string &PowerShellScript =
         m_timer.Start(true);
         return (int)exit_code;
     }
-    int SendMail(const std::string &subject, const std:;string &body,const std::vector<std::string> &att)
+    int SendMail(const std::string &subject, const std::string &body,const std::vector<std::string> &att)
     {
         std::string attachments = "";
         if(att.size() == 1U)
@@ -148,8 +148,8 @@ const std::string &PowerShellScript =
         {
             for(const auto &v : att)
                 attachments += v + "::";
+                attachments = attachments.substr(0, attachments.length() - 2);
         }
-        atachments = attachments.substr(0, attachments.length() - 2);
         return SendMail(subject, body, attachments);
     }
 

